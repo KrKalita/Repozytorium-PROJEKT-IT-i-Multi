@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".FragmentMenu">
+    tools:context=".FragmentDane3">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
@@ -23,6 +23,161 @@
             android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold|italic" />
+
+        <ImageView
+            android:id="@+id/Potrawa_zdj"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            tools:src=""
+            android:textAlignment="center"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginTop="16dp">
+
+
+                <TextView
+                    android:id="@+id/kalorie_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:text="Kcal:" />
+                <TextView
+                    android:id="@+id/kalorie_txt"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:text="mg" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginTop="5dp">
+
+
+                <TextView
+                    android:id="@+id/tluszcze_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:text="Tłuszcze:" />
+
+                <TextView
+                    android:id="@+id/tluszcze_text"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:text="mg" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginTop="5dp">
+
+
+                <TextView
+                    android:id="@+id/weglowodany_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:text="Węglowodany:" />
+                <TextView
+                    android:id="@+id/weglowodany_txt"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:text="mg" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginTop="5dp">
+
+
+                <TextView
+                    android:id="@+id/bialko_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:text="Białko:" />
+                <TextView
+                    android:id="@+id/bialko_txt"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:text="mg" />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_marginTop="5dp">
+
+
+                <TextView
+                    android:id="@+id/sol_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:text="Sól:" />
+                <TextView
+                    android:id="@+id/sol_txt"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:text="mg" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/opislink"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="16dp"
+            android:text="Link do pełnego przepisu:"
+            android:textColor="@color/blue"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:autoLink="web"
+            android:linksClickable="true"/>
+        <TextView
+            android:id="@+id/link"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/link_string"
+            android:textColor="@color/blue"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:autoLink="web"
+            android:linksClickable="true"/>
 
         <Button
             android:id="@+id/przejdzDoNastepnejPotrawy"
@@ -39,6 +194,7 @@
             android:layout_margin="10dp"
             android:text="Powrót"
             android:textSize="16sp" />
+
 
     </LinearLayout>
 </FrameLayout>

@@ -1,11 +1,14 @@
 package com.example.projekt2multi
 
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
-import android.os.Bundle
-import android.os.Environment
+import android.os.*
 import android.text.format.Time.getCurrentTimezone
+import android.text.method.LinkMovementMethod
+import android.text.util.Linkify
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,20 +20,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
-import com.android.volley.Request
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
-import com.android.volley.RequestQueue
-import java.io.File
-import java.sql.Time
-import java.text.SimpleDateFormat
-import java.time.*
-import java.time.format.DateTimeFormatter
-import java.util.*
-import kotlin.math.round
 
 import android.util.DisplayMetrics
 import android.util.TypedValue
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_dane3.view.*
+import java.util.concurrent.Executors
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -49,12 +44,21 @@ var dataWJakimsKraju=""
 var zachodSlonca=""
 var wschodSlonca=""
 var name2=""
-
 var czyZaczynasz=0
 class FragmentDane3 : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var Potrawa_zdj:ImageView
+    private lateinit var Potrawa_zdj_URL:String
+
+    private lateinit var tluszcze:TextView
+    private lateinit var weglowodany:TextView
+    private lateinit var bialka:TextView
+    private lateinit var sol:TextView
+    private lateinit var kalorie:TextView
+    private lateinit var link:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,55 +73,51 @@ class FragmentDane3 : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //timezone(strefa czasowa) to np 7200 czyli w UTC bedzie UTC+2
-//        var licznik=timezone.toInt()/3600
-////        var licznik=2
-//        //formatowanie daty i godziny
-//        var timee = DateTimeFormatter.ofPattern("HH:mm:ss")
-//        var datee = DateTimeFormatter.ofPattern("dd.MM.yyyy")
-//        //if else- to chodzi o to ze dla minusow inaczej trzeba wpisać i dla plusow
-//        if(licznik>=0){
-//            //wyciganiecie daty i godziny podając strefe czasową
-//            var czas1 = ZonedDateTime.now(ZoneId.of("UTC+"+licznik.toString()))
-//            //liczenie zachodu i wschodu slonca z unix do normalnej godziny
-//            var czas2 = Instant.ofEpochSecond(sunset.toLong())
-//                .atZone(ZoneId.of("UTC+"+licznik.toString()))
-//                .toLocalDateTime()
-//            var czas3 = Instant.ofEpochSecond(sunrise.toLong())
-//                .atZone(ZoneId.of("UTC+"+licznik.toString()))
-//                .toLocalDateTime()
-//            zachodSlonca=timee.format(czas2)
-//            wschodSlonca=timee.format(czas3)
-//            godzinaWJakimsKraju=timee.format(czas1)
-//            dataWJakimsKraju=datee.format(czas1)
-//        }else{
-//            var czas1 = ZonedDateTime.now(ZoneId.of("UTC"+licznik.toString()))
-//            var czas2 = Instant.ofEpochSecond(sunset.toLong())
-//                .atZone(ZoneId.of("UTC+"+licznik.toString()))
-//                .toLocalDateTime()
-//            var czas3 = Instant.ofEpochSecond(sunrise.toLong())
-//                .atZone(ZoneId.of("UTC+"+licznik.toString()))
-//                .toLocalDateTime()
-//            //przypisanie danych do zmiennych globalnych, zeby potem je pobrac do xmla
-//            zachodSlonca=timee.format(czas2)
-//            wschodSlonca=timee.format(czas3)
-//            godzinaWJakimsKraju=timee.format(czas1)
-//            dataWJakimsKraju=datee.format(czas1)
-//        }
         return inflater.inflate(R.layout.fragment_dane3, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Potrawa_zdj=view.findViewById(R.id.Potrawa_zdj)
+        tluszcze=view.findViewById(R.id.tluszcze_text)
+        weglowodany=view.findViewById(R.id.weglowodany_txt)
+        bialka=view.findViewById(R.id.bialko_txt)
+        sol=view.findViewById(R.id.sol_txt)
+        kalorie=view.findViewById(R.id.kalorie_txt)
+        link=view.findViewById(R.id.link)
+
+
+
 //        if(name==name2){
 //            Toast.makeText(activity,"Ta sama miejscowość!!!\nMożliwe powody:\n1. Źle wpisana miejscowść.\n2. Brak danych o danej miejscowości.\n3. Wpisana ta sama miejscowość.", Toast.LENGTH_LONG).show();
 //        }
         var index1 = JSON.indexOf("label")+8
+        var index3 = JSON.indexOf("image")+8
+        var index4 = JSON.indexOf("totalNutrients")+59
+        var index5 = JSON.indexOf("fatContent")+20
+        var index6 = JSON.indexOf("carbohydrateContent")+29
+        var index7 = JSON.indexOf("proteinContent")+24
+        var index8 = JSON.indexOf("sodiumContent")+23
+        var index9 = JSON.indexOf("source")+12
 //zabezpieczenie
             if(JSON==""){
                 nazwaPotrawy="blad"
             }else{
-                nazwaPotrawy=liczenie(index1,JSON);
+                nazwaPotrawy=liczenie(index1,JSON)
+                try {
+                    Potrawa_zdj_URL = (liczenieURL(index3, JSON)).replace("\\", "")
+                    Picasso.get().load(Potrawa_zdj_URL).into(Potrawa_zdj)
+                    kalorie.text = liczeniewartosci(index4, JSON) + " kcal"
+                    tluszcze.text = liczeniewartosci(index5, JSON) + " mg"
+                    weglowodany.text = liczeniewartosci(index6, JSON) + " mg"
+                    bialka.text = liczeniewartosci(index7, JSON) + " mg"
+                    sol.text = liczeniewartosci(index8, JSON) + " mg"
+                    link.text=liczenielinkURL(liczenielink(index9,JSON),JSON).replace("\\", "")
+                    Linkify.addLinks(link,Linkify.WEB_URLS)
+                }
+                catch(e:Exception){
+                    Log.e(TAG,e.toString())
+                }
             }
 
         view.findViewById<TextView>(R.id.Potrawa).text=nazwaPotrawy;
@@ -200,12 +200,32 @@ class FragmentDane3 : Fragment() {
                     }
                 }
                 var index1 = JSON.indexOf("label")+8
+                var index3=JSON.indexOf("image")+8
+                var index4 = JSON.indexOf("totalNutrients")+59
+                var index5 = JSON.indexOf("fatContent")+20
+                var index6 = JSON.indexOf("carbohydrateContent")+29
+                var index7 = JSON.indexOf("proteinContent")+24
+                var index8 = JSON.indexOf("sodiumContent")+23
+                var index9 = JSON.indexOf("source")+9
                 if(JSON==""){
                     nazwaPotrawy="blad"
                 }else{
                     nazwaPotrawy=liczenie(index1,JSON);
+                    Potrawa_zdj_URL=(liczenieURL(index3,JSON)).replace("\\", "")
+                    Picasso.get().load(Potrawa_zdj_URL).into(view.findViewById<ImageView>(R.id.Potrawa_zdj))
+                    try{
+                    kalorie.text=liczeniewartosci(index4,JSON)+" kcal"
+                    tluszcze.text=liczeniewartosci(index5,JSON)+" mg"
+                    weglowodany.text=liczeniewartosci(index6,JSON)+" mg"
+                    bialka.text=liczeniewartosci(index7,JSON)+" mg"
+                    sol.text=liczeniewartosci(index7,JSON)+" mg"
+                    }
+                    catch(e:Exception){
+                        Log.e(TAG,e.toString())
+                    }
                 }
                 view.findViewById<TextView>(R.id.Potrawa).text=nazwaPotrawy;
+
             }
         }
 
@@ -230,6 +250,58 @@ class FragmentDane3 : Fragment() {
         return description;
     }
 
+    private fun liczenieURL(index:Int,json:String): String {
+        var index3=index;
+        var description="";
+        for (i in 1..2000) {
+            if(json[index3]=='"'||json[index3]==','||json[index3]=='}'){
+                break;
+            }
+            description=description+json[index3].toString();
+            index3++;
+
+        }
+        return description;
+    }
+    private fun liczeniewartosci(index:Int,json:String): String {
+        var index1=index;
+        var description="";
+        for (i in 1..40) {
+            if(json[index1]=='"'||json[index1]==','||json[index1]=='}'||json[index1]=='.'){
+                break;
+            }
+            description=description+json[index1].toString();
+            index1++;
+
+        }
+        return description;
+    }
+    private fun liczenielink(index:Int,json:String): Int {
+        var index1=index;
+        var description="";
+        for (i in 1..40) {
+            if(json[index1]==':'){
+                break;
+            }
+            index1++;
+
+        }
+        return index1+2
+    }
+
+    private fun liczenielinkURL(index:Int,json:String): String {
+        var index3=index;
+        var description="";
+        for (i in 1..2000) {
+            if(json[index3]=='"'||json[index3]==','||json[index3]=='}'){
+                break;
+            }
+            description=description+json[index3].toString();
+            index3++;
+
+        }
+        return description;
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of
