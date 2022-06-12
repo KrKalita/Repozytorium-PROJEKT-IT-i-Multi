@@ -29,9 +29,9 @@
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_gravity="center"
+            android:textAlignment="center"
             android:visibility="visible"
-            tools:src=""
-            android:textAlignment="center"/>
+            tools:src="" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -40,118 +40,126 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="16dp"
+                android:gravity="center">
 
 
                 <TextView
                     android:id="@+id/kalorie_info"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/white"
+                    android:text="Kcal:"
                     android:textAlignment="center"
-                    android:text="Kcal:" />
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:id="@+id/kalorie_txt"
-                    android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:text="mg"
                     android:textAlignment="center"
-                    android:text="mg" />
+                    android:textColor="@color/white" />
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:gravity="center">
 
 
                 <TextView
                     android:id="@+id/tluszcze_info"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/white"
+                    android:text="Tłuszcze:"
                     android:textAlignment="center"
-                    android:text="Tłuszcze:" />
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/tluszcze_text"
-                    android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:text="mg"
                     android:textAlignment="center"
-                    android:text="mg" />
+                    android:textColor="@color/white" />
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:gravity="center">
 
 
                 <TextView
                     android:id="@+id/weglowodany_info"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/white"
+                    android:text="Węglowodany:"
                     android:textAlignment="center"
-                    android:text="Węglowodany:" />
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:id="@+id/weglowodany_txt"
-                    android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:text="mg"
                     android:textAlignment="center"
-                    android:text="mg" />
+                    android:textColor="@color/white" />
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:gravity="center">
 
 
                 <TextView
                     android:id="@+id/bialko_info"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/white"
+                    android:text="Białko:"
                     android:textAlignment="center"
-                    android:text="Białko:" />
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:id="@+id/bialko_txt"
-                    android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:text="mg"
                     android:textAlignment="center"
-                    android:text="mg" />
+                    android:textColor="@color/white" />
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:gravity="center"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:gravity="center">
 
 
                 <TextView
                     android:id="@+id/sol_info"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/white"
+                    android:text="Sól:"
                     android:textAlignment="center"
-                    android:text="Sól:" />
+                    android:textColor="@color/white" />
+
                 <TextView
                     android:id="@+id/sol_txt"
-                    android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:text="mg"
                     android:textAlignment="center"
-                    android:text="mg" />
+                    android:textColor="@color/white" />
             </TableRow>
 
         </TableLayout>
@@ -161,39 +169,47 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginTop="16dp"
-            android:text="Link do pełnego przepisu:"
-            android:textColor="@color/blue"
-            android:textAlignment="center"
-            android:gravity="center"
             android:autoLink="web"
-            android:linksClickable="true"/>
+            android:gravity="center"
+            android:linksClickable="true"
+            android:text="Link do pełnego przepisu:"
+            android:textAlignment="center"
+            android:textColor="@color/blue" />
+
         <TextView
             android:id="@+id/link"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:text="@string/link_string"
-            android:textColor="@color/blue"
-            android:textAlignment="center"
-            android:gravity="center"
             android:autoLink="web"
-            android:linksClickable="true"/>
+            android:gravity="center"
+            android:linksClickable="true"
+            android:text="@string/link_string"
+            android:textAlignment="center"
+            android:textColor="@color/blue" />
 
-        <Button
-            android:id="@+id/przejdzDoNastepnejPotrawy"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Następna Potrawa"
-            android:textSize="16sp" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/powrot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Powrót"
-            android:textSize="16sp" />
+            <Button
+                android:id="@+id/przejdzDoNastepnejPotrawy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Następna Potrawa"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/powrot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Powrót"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
 
     </LinearLayout>

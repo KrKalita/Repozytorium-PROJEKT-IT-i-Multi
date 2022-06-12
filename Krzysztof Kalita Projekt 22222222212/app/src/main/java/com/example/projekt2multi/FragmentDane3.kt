@@ -219,6 +219,8 @@ class FragmentDane3 : Fragment() {
                     weglowodany.text=liczeniewartosci(index6,JSON)+" mg"
                     bialka.text=liczeniewartosci(index7,JSON)+" mg"
                     sol.text=liczeniewartosci(index7,JSON)+" mg"
+//                    link.text=liczenielinkURL(liczenielink(index9,JSON),JSON).replace("\\", "")
+//                    Linkify.addLinks(link,Linkify.WEB_URLS)
                     }
                     catch(e:Exception){
                         Log.e(TAG,e.toString())
