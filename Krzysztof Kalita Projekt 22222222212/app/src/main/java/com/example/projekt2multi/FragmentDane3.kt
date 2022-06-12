@@ -213,15 +213,14 @@ class FragmentDane3 : Fragment() {
                     nazwaPotrawy=liczenie(index1,JSON);
                     Potrawa_zdj_URL=(liczenieURL(index3,JSON)).replace("\\", "")
                     Picasso.get().load(Potrawa_zdj_URL).into(view.findViewById<ImageView>(R.id.Potrawa_zdj))
-
                     try{
                     kalorie.text=liczeniewartosci(index4,JSON)+" kcal"
                     tluszcze.text=liczeniewartosci(index5,JSON)+" mg"
                     weglowodany.text=liczeniewartosci(index6,JSON)+" mg"
                     bialka.text=liczeniewartosci(index7,JSON)+" mg"
                     sol.text=liczeniewartosci(index7,JSON)+" mg"
-                        view.link.text=liczenielinkURL(liczenielink(index9,JSON),JSON).replace("\\", "")
-                        Linkify.addLinks(view.link,Linkify.WEB_URLS)
+//                    link.text=liczenielinkURL(liczenielink(index9,JSON),JSON).replace("\\", "")
+//                    Linkify.addLinks(link,Linkify.WEB_URLS)
                     }
                     catch(e:Exception){
                         Log.e(TAG,e.toString())
