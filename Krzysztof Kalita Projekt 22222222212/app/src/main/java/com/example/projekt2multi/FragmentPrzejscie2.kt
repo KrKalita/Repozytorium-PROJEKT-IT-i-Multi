@@ -48,7 +48,14 @@ class FragmentPrzejscie2 : Fragment() {
                 //trzeba poczekac chwilę żeby apiCall() się wykonało w mainactivity2
                 if(JSON==""){
                     Toast.makeText(getActivity(), "Poczekaj chwilę!!!", Toast.LENGTH_LONG).show();
-                }else{
+                }else if(JSON.length<50){
+                    Toast.makeText(getActivity(), "Nie znaleziono przepisu!\nSprobuj jeszcze raz.", Toast.LENGTH_LONG).show();
+                    JSON=""
+                    view.findNavController().navigate(R.id.fragmentWpisz1)
+
+                }
+                else
+                {
                     view.findNavController().navigate(R.id.fragmentDane3)
                 }
             }
@@ -59,11 +66,6 @@ class FragmentPrzejscie2 : Fragment() {
                 view.findNavController().navigate(R.id.fragmentWpisz1)
             }
         }
-//        view.findViewById<Button>(R.id.seniorzy4).apply {
-//            setOnClickListener {
-//                view.findNavController().navigate(R.id.przejscieSeniorzy2)
-//            }
-//        }
 
     }
 

@@ -69,31 +69,19 @@ class MainActivity2 : AppCompatActivity() {
         val jsonObjectRequest= JsonObjectRequest(
             Request.Method.GET,url,null,
             {
-                Log.d("wtf","Api call succesful")
+                Log.d("API","Api call succesful")
                 JSON=it.toString();
                 var JSON2=it.toString();
-                var index1 = JSON.indexOf("label")+8
-
-
-//                var index2 = JSON.indexOf("icon")+7
-//                var index3 = JSON.indexOf("sunrise")+9
-//                var index4 = JSON.indexOf("sunset")+8
-//                var index5 = JSON.indexOf("temp")+6
-//                var index6 = JSON.indexOf("pressure")+10
-//                var index7 = JSON.indexOf("timezone")+10
-//                var index8 = JSON.indexOf("name")+7
-                nazwaPotrawy=liczenie(index1,JSON);
+                try {
+                    var index1 = JSON.indexOf("label") + 8
+                    nazwaPotrawy=liczenie(index1,JSON);
+                }
+                catch(e:Exception){
+                    Log.e("cos","nie dziala")
+                }
 
                 //WYCIAGNAC INNE PARAMTERY!!!!
 
-                var description2=liczenie(index1,JSON);
-//                icon=liczenie(index2,JSON);
-//                sunrise=liczenie(index3,JSON);
-//                sunset=liczenie(index4,JSON);
-//                temp=liczenie(index5,JSON);
-//                pressure=liczenie(index6,JSON);
-//                timezone=liczenie(index7,JSON);
-//                name=liczenie(index8,JSON);
             }, {
                 Log.d("TAG","Api call failes")
             }

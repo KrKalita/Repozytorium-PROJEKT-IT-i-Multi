@@ -50,19 +50,6 @@ class FragmentWpisz1 : Fragment() {
                 view.findNavController().navigate(R.id.fragmentPrzejscie2)
             }
         }
-//        view.findViewById<Button>(R.id.powrot1).apply {
-//            setOnClickListener {
-//                wpiszMiejscowosc=view.findViewById<EditText>(R.id.wpiszMiejscowosc1).text.toString();
-//                view.findNavController().navigate(R.id.fragmentMenu)
-//            }
-//        }
-//        view.findViewById<Button>(R.id.seniorzy2).apply {
-//            setOnClickListener {
-//                wpiszMiejscowosc=view.findViewById<EditText>(R.id.wpiszMiejscowosc1).text.toString();
-//                view.findNavController().navigate(R.id.fragmentSeniorzy1)
-//            }
-//        }
-//                view.findViewById<EditText>(R.id.wpiszMiejscowosc1).setText(wpiszMiejscowosc)
     }
 
     companion object {

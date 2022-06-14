@@ -39,11 +39,6 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 //zmienne globalne
-var godzinaWJakimsKraju=""
-var dataWJakimsKraju=""
-var zachodSlonca=""
-var wschodSlonca=""
-var name2=""
 var czyZaczynasz=0
 class FragmentDane3 : Fragment() {
     // TODO: Rename and change types of parameters
@@ -88,9 +83,6 @@ class FragmentDane3 : Fragment() {
 
 
 
-//        if(name==name2){
-//            Toast.makeText(activity,"Ta sama miejscowość!!!\nMożliwe powody:\n1. Źle wpisana miejscowść.\n2. Brak danych o danej miejscowości.\n3. Wpisana ta sama miejscowość.", Toast.LENGTH_LONG).show();
-//        }
         var index1 = JSON.indexOf("label")+8
         var index3 = JSON.indexOf("image")+8
         var index4 = JSON.indexOf("totalNutrients")+59
@@ -103,8 +95,8 @@ class FragmentDane3 : Fragment() {
             if(JSON==""){
                 nazwaPotrawy="blad"
             }else{
-                nazwaPotrawy=liczenie(index1,JSON)
                 try {
+                    nazwaPotrawy=liczenie(index1,JSON)
                     Potrawa_zdj_URL = (liczenieURL(index3, JSON)).replace("\\", "")
                     Picasso.get().load(Potrawa_zdj_URL).into(Potrawa_zdj)
                     kalorie.text = liczeniewartosci(index4, JSON) + " kcal"
@@ -122,60 +114,6 @@ class FragmentDane3 : Fragment() {
 
         view.findViewById<TextView>(R.id.Potrawa).text=nazwaPotrawy;
         czyZaczynasz=1
-//        name2=view.findViewById<TextView>(R.id.miejscowosc1).text.toString()
-//        view.findViewById<TextView>(R.id.krotkiOpis1).text= "Krótki opis słowny: "+description;
-//        //Zamiana Kelwiny na Celsius
-//        var temperatura_celsius= round((temp.toDouble()-273.15)*100)/100
-//        var temperatura_celsius2=temperatura_celsius.toString()+"°C"
-//        view.findViewById<TextView>(R.id.temperatura1).text= temperatura_celsius2;
-//        view.findViewById<TextView>(R.id.cisnienie1).text= pressure+" hPa";
-//        view.findViewById<TextView>(R.id.godzinaWschodu1).text= wschodSlonca;
-//        view.findViewById<TextView>(R.id.godzinaZachodu1).text= zachodSlonca;
-//        view.findViewById<TextView>(R.id.czas1).text= godzinaWJakimsKraju;
-//        view.findViewById<TextView>(R.id.data1).text= dataWJakimsKraju;
-//
-//        var obraz=view.findViewById<ImageView>(R.id.obraz1)
-////        icon="03n"
-//        //wybranie ikony dla pogody
-//        if(icon=="01d"){
-//                    obraz.setBackgroundResource(R.drawable.icon_01d)
-//        }else if(icon=="02d"){
-//            obraz.setBackgroundResource(R.drawable.icon_02d)
-//        }else if(icon=="03d"){
-//            obraz.setBackgroundResource(R.drawable.icon_03d)
-//        }else if(icon=="04d"){
-//            obraz.setBackgroundResource(R.drawable.icon_04d)
-//        }else if(icon=="09d"){
-//            obraz.setBackgroundResource(R.drawable.icon_09d)
-//        }else if(icon=="10d"){
-//            obraz.setBackgroundResource(R.drawable.icon_10d)
-//        }else if(icon=="11d"){
-//            obraz.setBackgroundResource(R.drawable.icon_11d)
-//        }else if(icon=="13d"){
-//            obraz.setBackgroundResource(R.drawable.icon_13d)
-//        }else if(icon=="50d"){
-//            obraz.setBackgroundResource(R.drawable.icon_50d)
-//        }else if(icon=="01n"){
-//            obraz.setBackgroundResource(R.drawable.icon_01n)
-//        }else if(icon=="02n"){
-//            obraz.setBackgroundResource(R.drawable.icon_02n)
-//        }else if(icon=="03n"){
-//            obraz.setBackgroundResource(R.drawable.icon_03n)
-//        }else if(icon=="04n"){
-//            obraz.setBackgroundResource(R.drawable.icon_04n)
-//        }else if(icon=="09n"){
-//            obraz.setBackgroundResource(R.drawable.icon_09n)
-//        }else if(icon=="10n"){
-//            obraz.setBackgroundResource(R.drawable.icon_10n)
-//        }else if(icon=="11n"){
-//            obraz.setBackgroundResource(R.drawable.icon_11n)
-//        }else if(icon=="13n"){
-//            obraz.setBackgroundResource(R.drawable.icon_13n)
-//        }else if(icon=="50n"){
-//            obraz.setBackgroundResource(R.drawable.icon_50n)
-//        }else{
-//            obraz.setBackgroundResource(R.drawable.icon_blad)
-//        }
 
         view.findViewById<Button>(R.id.powrot).apply {
             setOnClickListener {
@@ -186,7 +124,6 @@ class FragmentDane3 : Fragment() {
         view.findViewById<Button>(R.id.przejdzDoNastepnejPotrawy).apply {
             setOnClickListener {
                 //usuwanie pierwszej potrawy ze stringa za każdym razem jak nacisniemy i aktualizacja danych
-                //DODAC INNE PARAMETRY!!!!!!!!!!
                 var index2 = JSON.indexOf("edamam.owl")+10
                 if(index2==9){
                 }else{
@@ -231,11 +168,6 @@ class FragmentDane3 : Fragment() {
             }
         }
 
-//        view.findViewById<Button>(R.id.seniorzy3).apply {
-//            setOnClickListener {
-//                view.findNavController().navigate(R.id.fragmentSeniorzy2)
-//            }
-//        }
     }
     //wyciągnięcie danych ze Stringa
     private fun liczenie(index:Int,json:String): String {
