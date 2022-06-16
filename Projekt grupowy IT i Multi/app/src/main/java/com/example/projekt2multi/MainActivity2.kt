@@ -23,17 +23,13 @@ var JSON=""
 var nazwaPotrawy=""
 var wpiszNazwePotrawy="chicken"
 var ileWykonac=0
-var MoznaIscDalej=0
 class MainActivity2 : AppCompatActivity() {
 //inicjalizacja komponentow z xmla i z firebase i inne
     private val auth = FirebaseAuth.getInstance()
-//    private lateinit var dodaj2: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
-        //inicjalizacja komponentow z xmla
-//        dodaj2=findViewById(R.id.dodaj2)
 
     }
     override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
@@ -71,7 +67,6 @@ class MainActivity2 : AppCompatActivity() {
             {
                 Log.d("API","Api call succesful")
                 JSON=it.toString();
-                var JSON2=it.toString();
                 try {
                     var index1 = JSON.indexOf("label") + 8
                     nazwaPotrawy=liczenie(index1,JSON);
@@ -80,7 +75,6 @@ class MainActivity2 : AppCompatActivity() {
                     Log.e("cos","nie dziala")
                 }
 
-                //WYCIAGNAC INNE PARAMTERY!!!!
 
             }, {
                 Log.d("TAG","Api call failes")

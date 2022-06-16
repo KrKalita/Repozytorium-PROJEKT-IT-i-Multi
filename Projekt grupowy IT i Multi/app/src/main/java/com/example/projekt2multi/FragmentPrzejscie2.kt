@@ -43,6 +43,7 @@ class FragmentPrzejscie2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //jak klikne tak
         view.findViewById<Button>(R.id.tak).apply {
             setOnClickListener {
                 //trzeba poczekac chwilę żeby apiCall() się wykonało w mainactivity2
@@ -60,6 +61,7 @@ class FragmentPrzejscie2 : Fragment() {
                 }
             }
         }
+        //jak klikne nie
         view.findViewById<Button>(R.id.nie).apply {
             setOnClickListener {
                 JSON=""

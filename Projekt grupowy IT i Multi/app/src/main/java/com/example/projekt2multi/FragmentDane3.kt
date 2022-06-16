@@ -125,6 +125,7 @@ class FragmentDane3 : Fragment() {
             setOnClickListener {
                 //usuwanie pierwszej potrawy ze stringa za każdym razem jak nacisniemy i aktualizacja danych
                 var index2 = JSON.indexOf("edamam.owl")+10
+                //zabezpieczenie
                 if(index2==9){
                 }else{
                     if(czyZaczynasz==1){
@@ -136,6 +137,7 @@ class FragmentDane3 : Fragment() {
                         JSON=JSON.drop(index2)
                     }
                 }
+                //liczenie indeksow
                 var index1 = JSON.indexOf("label")+8
                 var index3=JSON.indexOf("image")+8
                 var index4 = JSON.indexOf("totalNutrients")+59
@@ -144,6 +146,7 @@ class FragmentDane3 : Fragment() {
                 var index7 = JSON.indexOf("proteinContent")+24
                 var index8 = JSON.indexOf("sodiumContent")+23
                 var index9 = JSON.indexOf("source")+9
+                //zabezpiecznie
                 if(JSON==""){
                     nazwaPotrawy="blad"
                 }else{
@@ -151,6 +154,7 @@ class FragmentDane3 : Fragment() {
                     Potrawa_zdj_URL=(liczenieURL(index3,JSON)).replace("\\", "")
                     Picasso.get().load(Potrawa_zdj_URL).into(view.findViewById<ImageView>(R.id.Potrawa_zdj))
                     try{
+                        //zmiana tekstu w interfejscie graficznym
                     kalorie.text=liczeniewartosci(index4,JSON)+" kcal"
                     tluszcze.text=liczeniewartosci(index5,JSON)+" mg"
                     weglowodany.text=liczeniewartosci(index6,JSON)+" mg"
@@ -183,7 +187,7 @@ class FragmentDane3 : Fragment() {
         }
         return description;
     }
-
+    //wyciągnięcie danych ze Stringa
     private fun liczenieURL(index:Int,json:String): String {
         var index3=index;
         var description="";
@@ -197,6 +201,7 @@ class FragmentDane3 : Fragment() {
         }
         return description;
     }
+    //wyciągnięcie danych ze Stringa
     private fun liczeniewartosci(index:Int,json:String): String {
         var index1=index;
         var description="";
@@ -210,6 +215,7 @@ class FragmentDane3 : Fragment() {
         }
         return description;
     }
+    //wyciągnięcie danych ze Stringa
     private fun liczenielink(index:Int,json:String): Int {
         var index1=index;
         var description="";
@@ -222,7 +228,7 @@ class FragmentDane3 : Fragment() {
         }
         return index1+2
     }
-
+    //wyciągnięcie danych ze Stringa
     private fun liczenielinkURL(index:Int,json:String): String {
         var index3=index;
         var description="";
